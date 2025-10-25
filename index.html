@@ -1,185 +1,159 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Si-Axis — Tecnologia & IA</title>
-  <meta name="description" content="Si-Axis — Tecnologia, Inteligência Artificial e Inovação" />
-  <!-- Fonte (Google Fonts) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Si-Axis</title>
   <style>
-    :root{
-      --bg:#0b0f14;
-      --card:#0f1720;
-      --muted:#9aa6b2;
-      --accent:#00d0ff; /* azul elétrico */
-      --accent-2:#38ff9a; /* verde neon alternativo */
-      --glass: rgba(255,255,255,0.03);
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background:linear-gradient(180deg,#06080a 0%, #071018 60%);
-      color:#e6f0f6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
+    /* Reset de margens e preenchimentos */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    /* Container */
-    .wrap{max-width:1100px;margin:0 auto;padding:28px}
+    /* Corpo da página */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #0d1117;
+      color: #fff;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-    /* Header */
-    header{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-    .logo{display:flex;align-items:center;gap:12px}
-    .logo svg{width:48px;height:48px}
-    .brand{font-weight:800;letter-spacing:0.6px}
-    .brand .si{color:var(--accent);font-weight:900}
-    nav{display:flex;gap:18px;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600}
-    .cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:8px 14px;border-radius:10px;color:#00101a;text-decoration:none;font-weight:700}
+    /* Fundo com partículas azuis */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://cdn.pixabay.com/vimeo/55044/particles-blue-55044.mp4') no-repeat center center fixed;
+      background-size: cover;
+      z-index: -1;
+      animation: moveBackground 30s linear infinite;
+    }
 
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr;gap:24px;margin:48px 0;align-items:center}
-    .hero .title{font-size:34px;font-weight:800;margin:0}
-    .hero p{color:var(--muted);margin:8px 0 0}
-    .hero-actions{margin-top:18px;display:flex;gap:12px}
-    .btn{padding:12px 18px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
-    .btn-primary{background:var(--accent);color:#001;}
-    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    @keyframes moveBackground {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
 
-    /* Cards */
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:24px}
-    .card{background:var(--card);padding:18px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.6)}
-    .small{font-size:13px;color:var(--muted)}
+    /* Logo Si-Axis */
+    .logo {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #1f6feb;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
 
-    /* Sections */
-    section{margin:44px 0}
-    h2{font-size:20px;margin:0 0 12px}
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px #1f6feb, 0 0 10px #1f6feb, 0 0 15px #1f6feb;
+      }
+      100% {
+        text-shadow: 0 0 20px #1f6feb, 0 0 30px #1f6feb, 0 0 40px #1f6feb;
+      }
+    }
 
-    /* Contact */
-    .contact a{display:inline-block;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021019;text-decoration:none;font-weight:800}
+    /* Rodapé */
+    footer {
+      width: 100%;
+      background-color: rgba(10, 25, 70, 0.9);
+      padding: 20px;
+      text-align: center;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
 
-    footer{padding:30px 0;text-align:center;color:var(--muted);font-size:13px}
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 10px;
+    }
 
-    /* Responsive */
-    @media(min-width:860px){
-      .hero{grid-template-columns:1fr 380px}
-      .hero .title{font-size:42px}
+    .footer-icons a img {
+      width: 40px;
+      transition: transform 0.3s;
+    }
+
+    .footer-icons a img:hover {
+      transform: scale(1.2);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 2.5rem;
+      }
+
+      .footer-icons a img {
+        width: 35px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 2rem;
+      }
+
+      .footer-icons a img {
+        width: 30px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">
-        <!-- Logo simples: 'Si' com destaque -->
-        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-          <rect x="0" y="0" width="64" height="64" rx="12" fill="transparent"/>
-          <g transform="translate(8,8)">
-            <text x="0" y="28" font-family="Inter, Arial" font-size="28" font-weight="800" fill="#9fbfd8">A</text>
-            <!-- Destaque do Si -->
-            <text x="18" y="28" font-family="Inter, Arial" font-size="28" font-weight="900" fill="#00d0ff">Si</text>
-          </g>
-        </svg>
-        <div>
-          <div class="brand">Si-<span class="si">Axis</span></div>
-          <div class="small">Tecnologia • Inteligência Artificial</div>
-        </div>
-      </div>
 
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#contato">Contato</a>
-        <a class="cta" href="#projetos">Compre o e-book</a>
-      </nav>
-    </header>
+  <!-- Fundo com partículas -->
+  <div class="particles"></div>
 
-    <main>
-      <section id="home" class="hero">
-        <div>
-          <h1 class="title">Si-Axis — onde tecnologia encontra ensino</h1>
-          <p>Conteúdos práticos sobre hardware, desempenho e inteligência artificial — em linguagem acessível para quem quer aprender a construir e não só a consumir.</p>
-          <div class="hero-actions">
-            <button class="btn btn-primary">Conhecer o projeto</button>
-            <button class="btn btn-outline">Ver o e-book</button>
-          </div>
+  <!-- Logo Si-Axis -->
+  <div class="logo">Si-Axis</div>
 
-          <div class="cards" aria-hidden>
-            <div class="card">
-              <div class="small">E-book</div>
-              <strong>Era da Computação</strong>
-              <p class="small">Resumo prático e aplicações.</p>
-            </div>
-            <div class="card">
-              <div class="small">Tutoriais</div>
-              <strong>Montagem & Manutenção</strong>
-              <p class="small">Guia passo a passo para iniciantes.</p>
-            </div>
-            <div class="card">
-              <div class="small">Cursos</div>
-              <strong>IA aplicada</strong>
-              <p class="small">Conteúdos futuros planejados.</p>
-            </div>
-          </div>
-        </div>
+  <!-- Conteúdo principal -->
+  <main>
+    <section>
+      <h1>Bem-vindo ao Si-Axis</h1>
+      <p>Seu portal de tecnologia, IA e muito mais.</p>
+    </section>
 
-        <!-- Área lateral opcional: imagem/preview -->
-        <aside class="card" style="min-height:220px;display:flex;align-items:center;justify-content:center">
-          <div style="text-align:center;">
-            <div style="font-weight:800;font-size:18px;">Preview do e-book</div>
-            <div class="small" style="margin-top:8px">Capa minimal | PDF</div>
-          </div>
-        </aside>
-      </section>
+    <section>
+      <h2>E-book: A Era da Computação</h2>
+      <p>Descubra os segredos da tecnologia moderna e o futuro da inteligência artificial.</p>
+      <a href="#">Adquira o seu na Hotmart</a>
+    </section>
 
-      <section id="sobre">
-        <h2>Sobre</h2>
-        <p class="small">Si-Axis nasce do interesse por hardware, desempenho e didática: explicar o porquê das coisas e mostrar como montar soluções práticas com baixo custo. Conteúdo pensado para quem não quer apenas consumir, mas aprender fazendo.</p>
-      </section>
+    <section>
+      <h2>Sobre o Projeto</h2>
+      <p>O Si-Axis nasceu com a missão de unir conhecimento, tecnologia e inovação de forma acessível.</p>
+    </section>
 
-      <section id="projetos">
-        <h2>Projetos</h2>
-        <div class="cards">
-          <div class="card">
-            <strong>Era da Computação — e-book</strong>
-            <p class="small">Resumo, divulgação e link para compra.</p>
-          </div>
-          <div class="card">
-            <strong>Guias & Tutoriais</strong>
-            <p class="small">Manutenção, otimização, montagem.</p>
-          </div>
-          <div class="card">
-            <strong>Fórum</strong>
-            <p class="small">Comunidade para trocar conhecimento.</p>
-          </div>
-        </div>
-      </section>
+    <section>
+      <h2>Contato</h2>
+      <p>Entre em contato através das redes sociais ou pelo formulário abaixo.</p>
+    </section>
+  </main>
 
-      <section id="contato" class="contact">
-        <h2>Contato</h2>
-        <p class="small">Quer falar direto? Clique no botão abaixo para abrir um chat no WhatsApp (número de exemplo).</p>
-        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">Abrir WhatsApp</a>
-      </section>
-    </main>
+  <!-- Rodapé com ícones de contato -->
+  <footer>
+    <div class="footer-icons">
+      <a href="#" title="YouTube"><img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube"></a>
+      <a href="#" title="Instagram"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram"></a>
+      <a href="#" title="X"><img src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png" alt="X"></a>
+      <a href="#" title="Facebook"><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png" alt="Facebook"></a>
+      <a href="#" title="Hotmart"><img src="https://img.icons8.com/ios-filled/50/ffffff/shop.png" alt="Hotmart"></a>
+    </div>
+    <p>© 2025 Si-Axis - Todos os direitos reservados</p>
+  </footer>
 
-    <footer>
-      © Si-Axis — Feito com foco em aprendizado prático.
-    </footer>
-  </div>
-
-  <script>
-    // JS mínimo: comportamento do botão (exemplo)
-    document.querySelectorAll('.btn-primary').forEach(b => {
-      b.addEventListener('click', () => {
-        document.location.hash = '#projetos'
-      })
-    })
-  </script>
 </body>
 </html>
-
